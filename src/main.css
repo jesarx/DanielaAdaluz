@@ -3,14 +3,12 @@
 
 @theme {
   --color-cream: #faf8f1;
-  --color-paper: #fffdf8;
   --color-ink: #27305c;
   --color-ink-deep: #1d2445;
   --color-olive: #a2a03f;
   --color-sage: #6f8b6e;
-  --color-sage-soft: #eef1ea;
   --color-gold: #e3c25c;
-  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-mono: "Roboto Mono", ui-monospace, "Courier New", monospace;
   --font-sans: "Work Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
@@ -28,13 +26,13 @@ body {
   color: var(--color-ink-deep);
 }
 
-/* ---------- Scroll reveal ---------- */
+/* ---------- Aparición sutil al hacer scroll ---------- */
 .reveal {
   opacity: 0;
-  transform: translateY(26px);
+  transform: translateY(14px);
   transition:
-    opacity 0.9s ease,
-    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: var(--reveal-delay, 0ms);
 }
 .reveal.is-visible {
@@ -42,18 +40,10 @@ body {
   transform: none;
 }
 
-/* ---------- Branch drawing animation ---------- */
-.branch path {
-  fill: none;
-  stroke-linecap: round;
-  transition: stroke-dashoffset 1.4s cubic-bezier(0.4, 0, 0.3, 1);
-  transition-delay: var(--draw-delay, 0ms);
-}
-
-/* ---------- Horizontal scroll strips ---------- */
+/* ---------- Tiras con scroll horizontal ---------- */
 .hscroll {
   scrollbar-width: thin;
-  scrollbar-color: color-mix(in srgb, var(--color-cream) 45%, transparent) transparent;
+  scrollbar-color: color-mix(in srgb, var(--color-ink) 25%, transparent) transparent;
   scroll-snap-type: x proximity;
 }
 .hscroll > * {
@@ -63,28 +53,25 @@ body {
   height: 6px;
 }
 .hscroll::-webkit-scrollbar-thumb {
-  background: color-mix(in srgb, var(--color-cream) 40%, transparent);
+  background: color-mix(in srgb, var(--color-ink) 20%, transparent);
   border-radius: 999px;
 }
 
-/* ---------- Gallery items ---------- */
+/* ---------- Elementos de galería ---------- */
 .gitem {
   display: block;
   overflow: hidden;
-  border-radius: 0.375rem;
-  background: color-mix(in srgb, var(--color-ink) 6%, transparent);
+  background: color-mix(in srgb, var(--color-ink) 5%, transparent);
 }
 .gitem img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition:
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.5s ease;
+  transition: opacity 0.4s ease;
 }
 .gitem:hover img,
 .gitem:focus-visible img {
-  transform: scale(1.035);
+  opacity: 0.88;
 }
 .gitem:focus-visible {
   outline: 2px solid var(--color-olive);
@@ -113,7 +100,6 @@ body {
   max-width: min(92vw, 1500px);
   max-height: 78vh;
   object-fit: contain;
-  border-radius: 4px;
   box-shadow: 0 20px 60px rgb(0 0 0 / 0.45);
 }
 .lb-btn {
@@ -131,7 +117,7 @@ body {
   background: rgb(255 255 255 / 0.16);
 }
 
-/* ---------- CV accordions ---------- */
+/* ---------- Acordeones del CV ---------- */
 details.cv summary {
   cursor: pointer;
   list-style: none;
@@ -146,7 +132,7 @@ details.cv[open] summary .cv-mark {
   transform: rotate(45deg);
 }
 
-/* ---------- Reduced motion ---------- */
+/* ---------- Movimiento reducido ---------- */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -154,11 +140,6 @@ details.cv[open] summary .cv-mark {
   .reveal {
     opacity: 1;
     transform: none;
-    transition: none;
-  }
-  .branch path {
-    stroke-dasharray: none !important;
-    stroke-dashoffset: 0 !important;
     transition: none;
   }
   .gitem img {
