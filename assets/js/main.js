@@ -42,9 +42,17 @@
         entries.forEach(function (entry) {
           if (!entry.isIntersecting) return;
           var id = "#" + entry.target.id;
+          var isSub = false;
           navLinks.forEach(function (a) {
-            a.classList.toggle("is-active", a.getAttribute("href") === id);
+            var on = a.getAttribute("href") === id;
+            a.classList.toggle("is-active", on);
+            if (on && a.hasAttribute("data-subnav")) isSub = true;
           });
+          if (isSub) {
+            navLinks.forEach(function (a) {
+              if (a.getAttribute("href") === "#proyectos") a.classList.add("is-active");
+            });
+          }
         });
       },
       { rootMargin: "-40% 0px -55% 0px" }
@@ -78,35 +86,6 @@
   } else {
     revealEls.forEach(function (el) {
       el.classList.add("is-visible");
-    });
-  }
-
-  /* ---------- Ramas que se dibujan ---------- */
-  var branches = document.querySelectorAll(".branch");
-  if (!reducedMotion && branches.length) {
-    branches.forEach(function (svg) {
-      var paths = svg.querySelectorAll("path");
-      paths.forEach(function (p, i) {
-        var len = p.getTotalLength();
-        p.style.strokeDasharray = len;
-        p.style.strokeDashoffset = len;
-        p.style.setProperty("--draw-delay", Math.min(i * 26, 2400) + "ms");
-      });
-    });
-    var branchObserver = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          entry.target.querySelectorAll("path").forEach(function (p) {
-            p.style.strokeDashoffset = "0";
-          });
-          branchObserver.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.2 }
-    );
-    branches.forEach(function (svg) {
-      branchObserver.observe(svg);
     });
   }
 

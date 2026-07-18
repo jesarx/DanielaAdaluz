@@ -11,9 +11,9 @@ repo es exactamente lo que se sirve.
 ```
 index.html              La página completa (todas las secciones)
 assets/css/main.css     Tailwind compilado (no editar a mano)
-assets/js/main.js       Interacciones: scroll-reveal, lightbox, menú, ramas SVG
+assets/js/main.js       Interacciones: scroll-reveal, lightbox, menús, submenú de proyectos
 assets/img/             Imágenes optimizadas (-sm ~800px para galerías, -lg ~1600px para el visor)
-assets/fonts/           Fraunces y Work Sans autoalojadas (woff2)
+assets/fonts/           Roboto Mono y Work Sans autoalojadas (woff2)
 src/main.css            Fuente de Tailwind (colores, tipografías, estilos propios)
 deploy/                 Configuración de nginx lista para usar
 ```
