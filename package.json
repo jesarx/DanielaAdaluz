@@ -1,0 +1,13 @@
+{
+  "name": "danielaadaluz.com",
+  "private": true,
+  "description": "Portafolio de Daniela Adaluz — sitio estático (HTML + Tailwind + JS vanilla)",
+  "scripts": {
+    "build:css": "tailwindcss -i src/main.css -o assets/css/main.css --minify",
+    "watch:css": "tailwindcss -i src/main.css -o assets/css/main.css --minify --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  }
+}
