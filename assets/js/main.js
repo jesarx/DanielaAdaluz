@@ -103,6 +103,27 @@
     });
   });
 
+  /* ---------- Sliders (obras del mismo tamaño) ---------- */
+  document.querySelectorAll("[data-slider]").forEach(function (slider) {
+    var slides = Array.prototype.slice.call(slider.querySelectorAll("[data-slide]"));
+    if (slides.length < 2) return;
+    var idx = 0;
+    function show(i) {
+      idx = (i + slides.length) % slides.length;
+      slides.forEach(function (s, j) {
+        s.classList.toggle("hidden", j !== idx);
+      });
+      slider.querySelectorAll("[data-slide-counter]").forEach(function (c) {
+        c.textContent = idx + 1 + " / " + slides.length;
+      });
+    }
+    slider.addEventListener("click", function (e) {
+      if (e.target.closest("[data-slide-prev]")) show(idx - 1);
+      else if (e.target.closest("[data-slide-next]")) show(idx + 1);
+    });
+    show(0);
+  });
+
   /* ---------- Lightbox ---------- */
   var lb = document.getElementById("lightbox");
   if (lb) {
