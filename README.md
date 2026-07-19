@@ -14,6 +14,9 @@ assets/css/main.css     Tailwind compilado (no editar a mano)
 assets/js/main.js       Interacciones: scroll-reveal, lightbox, menús, submenú de proyectos
 assets/img/             Imágenes optimizadas (-sm ~800px para galerías, -lg ~1600px para el visor)
 assets/fonts/           Roboto Mono y Work Sans autoalojadas (woff2)
+assets/img/formas/      Formas de ramificación (hoja, radial, coral, helecho) usadas
+                        como acentos; para usar los dibujos originales basta con
+                        sobrescribir estos PNG conservando los mismos nombres
 src/main.css            Fuente de Tailwind (colores, tipografías, estilos propios)
 deploy/                 Configuración de nginx lista para usar
 ```
